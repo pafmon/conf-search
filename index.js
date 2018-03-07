@@ -9,18 +9,21 @@ var menuId = chrome.contextMenus.create(
 
 
 function showResult(conferenceData){
-    var conferenceClass = conferenceData.collected_classes;
+    
     var conferenceTitle = conferenceData.title;
     var conferenceAcronym = conferenceData.acronym;
+    
+    var conferenceClass = conferenceData.ggs_class;
+
     var conferenceRating = conferenceData.ggs_rating;
+    var conferenceCollectedClasses = conferenceData.collected_classes;
 
     console.log("conferenceClass: "+conferenceClass);
     chrome.tabs.executeScript(null, {
             code: 'alert("'
-                    +"- Acronym: "+ conferenceAcronym+'\\n'
-                    +"- Title: "+ conferenceTitle+'\\n'
+                    +"- Conference: "+ conferenceTitle+' ('+conferenceAcronym+')\\n'
                     +"- Class: "+ conferenceClass+'\\n'
-                    +"- Rating: "+ conferenceRating+'\\n'
+                    +"- Rating: "+ conferenceRating+' ('+conferenceCollectedClasses+')\\n'
                     +'");'
     });
 }
